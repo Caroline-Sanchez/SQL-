@@ -1,0 +1,38 @@
+  --Create an Inventory database for a Makeup Artist Kit 
+  
+CREATE TABLE Makeup_Inventory (ID INTEGER PRIMARY KEY, Brand TEXT, Item TEXT, Color TEXT, Quantity INTEGER);
+
+INSERT INTO Makeup_Inventory VALUES (001, "Too Faced", "Foundation", "Fair", 1);
+INSERT INTO Makeup_Inventory VALUES (002, "Too Faced", "Foundation", "Light", 1);
+INSERT INTO Makeup_Inventory VALUES (003, "Too Faced", "Foundation", "Light Medium", 1);
+INSERT INTO Makeup_Inventory VALUES (004, "Too Faced", "Foundation", "Medium", 1);
+INSERT INTO Makeup_Inventory VALUES (005, "Too Faced", "Foundation", "Medium Tan", 1);
+INSERT INTO Makeup_Inventory VALUES (006, "Too Faced", "Foundation", "Tan", 1);
+INSERT INTO Makeup_Inventory VALUES (007, "Too Faced", "Foundation", "Deep Tan", 1);
+INSERT INTO Makeup_Inventory VALUES (008, "Too Faced", "Foundation", "Deep", 1);
+INSERT INTO Makeup_Inventory VALUES (009, "Too Faced", "Foundation", "Deep Dark", 1);
+INSERT INTO Makeup_Inventory VALUES (0010, "Too Faced", "Foundation", "Richest Deep Dark", 1);
+INSERT INTO Makeup_Inventory VALUES (0021, "Rare Beauty", "Blush", "Believe", 1);
+INSERT INTO Makeup_Inventory VALUES (0022, "Rare Beauty", "Blush", "Joy", 1);
+INSERT INTO Makeup_Inventory VALUES (0023, "Rare Beauty", "Blush", "Encourage", 1);
+INSERT INTO Makeup_Inventory VALUES (0024, "Rare Beauty", "Blush", "Hope", 1);
+INSERT INTO Makeup_Inventory VALUES (0025, "Rare Beauty", "Blush", "Happy", 1);
+INSERT INTO Makeup_Inventory VALUES (0031, "Glossier", "Lip Balm", "Birthday", 1);
+INSERT INTO Makeup_Inventory VALUES (0032, "Glossier", "Lip Balm", "Mango", 1);
+INSERT INTO Makeup_Inventory VALUES (0033, "Glossier", "Lip Balm", "Berry", 1);
+INSERT INTO Makeup_Inventory VALUES (0034, "Glossier", "Lip Balm", "Wild Fig", 1);
+INSERT INTO Makeup_Inventory VALUES (0035, "Glossier", "Lip Balm", "Coconut", 1);
+INSERT INTO Makeup_Inventory VALUES (0041, "YSL", "Mascara", "Black", 1);
+INSERT INTO Makeup_Inventory VALUES (0042, "YSL", "Mascara", "Brown", 1);
+INSERT INTO Makeup_Inventory VALUES (0061, "Drugstore", "Sponges", "Disposable", 50);
+INSERT INTO Makeup_Inventory VALUES (0062, "Nars", "Blush", "Brush", 5);
+INSERT INTO Makeup_Inventory VALUES (0063, "Nars", "Eyeshadow", "Brush", 5);
+INSERT INTO Makeup_Inventory VALUES (0064, "Nars", "Eyeliner", "Brush", 5);
+INSERT INTO Makeup_Inventory VALUES (0065, "Nars", "Contour", "Brush", 5);
+INSERT INTO Makeup_Inventory VALUES (0066, "Nars", "Powder", "Brush", 5);
+
+-- Display the database by order of Brand.
+Select* From Makeup_Inventory
+ORDER BY Brand;
+
+
