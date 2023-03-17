@@ -1,0 +1,56 @@
+/* Here I created a table of Mariah Carey hits, the year the song came out and if they reached number 1 with a yes or no */
+
+create table MC_Songs(ID INTEGER PRIMARY KEY, 
+Song_Name TEXT, 
+Year INTEGER,
+No_1 TEXT);
+INSERT INTO MC_Songs values(001, 'Boy I Need You', 2002, 'N');
+INSERT INTO MC_Songs values(002, 'Bye Bye', 2008, 'N');
+INSERT INTO MC_Songs values(003, 'Its like that', 2005, 'N');
+INSERT INTO MC_Songs values(004, 'I want to know what love is', 2009, 'N');
+INSERT INTO MC_Songs values(005, 'Bringing on the heartbreak', 2002, 'N');
+INSERT INTO MC_Songs values(006, 'Hero', 1993, 'Y');
+INSERT INTO MC_Songs values(007, 'We belong together', 2005, 'Y');
+INSERT INTO MC_Songs values(009, 'One sweet day', 1996, 'Y');
+INSERT INTO MC_Songs values(010, 'Vision of love', 1990, 'Y');
+INSERT INTO MC_Songs values(011, 'Dreamlover', 1993, 'Y');
+INSERT INTO MC_Songs values(012, 'Fantasy', 1996, 'Y');
+INSERT INTO MC_Songs values(013, 'Honey', 1998, 'Y');
+INSERT INTO MC_Songs values(014, 'Always be my baby', 1996, 'Y');
+INSERT INTO MC_Songs values(015, 'My all', 1998, 'Y');
+INSERT INTO MC_Songs values(016, 'Touch my body', 2008, 'Y');
+INSERT INTO MC_Songs values(017, 'Heartbreaker', 1999, 'Y');
+INSERT INTO MC_Songs values(018, 'The Roof', 1998, 'Y');
+INSERT INTO MC_Songs values(019, 'Shake it off', 2005, 'N');
+INSERT INTO MC_Songs values(020, 'Obsessed', 2009, 'N');
+
+
+
+/* Here a created a second table of Mariah Carey albums and the year they came out*/
+
+create table MC_Albums(Album_ID INTEGER PRIMARY KEY, 
+Album_Name TEXT, Year INTEGER);
+INSERT INTO MC_Albums values (201, 'Charmbracelet', 2002);
+INSERT INTO MC_Albums values (202, 'E=MC2', 2008);
+INSERT INTO MC_Albums values (203, 'The Emancipation of Mimi', 2005);
+INSERT INTO MC_Albums values (204, 'Memoirs of an Imperfect Angel', 2009);
+INSERT INTO MC_Albums values (205, 'Music Box', 1993);
+INSERT INTO MC_Albums values (206, 'Daydream', 1996);
+INSERT INTO MC_Albums values (207, 'Mariah Carey', 1990);
+INSERT INTO MC_Albums values (208, 'Butterfly', 1998);
+
+
+/* Here I JOINed the two table by combing hit with the corresponding album and year */
+INSERT INTO MC_Albums values (209, 'Rainbow', 1999);
+SELECT 
+MC_Songs.Song_Name, 
+MC_Songs.Year,
+MC_Albums.Album_name
+FROM 
+mc_songs
+left outer join MC_Albums on mc_albums.year=mc_songs.year
+order by MC_Songs.year;
+
+/* In this table I COUNTed the amount of hit that went number one vs the amount that did not go to number one*/
+select sum(no_1='Y')as no_1,
+sum(no_1='N')as not_no1 from mc_songs;
