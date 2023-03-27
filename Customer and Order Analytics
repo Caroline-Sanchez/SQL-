@@ -31,7 +31,8 @@ In this SQL, I'm querying a database with multiple tables in it to quantify stat
 	ORDER BY price ASC LIMIT 1
 	
 	#5. What is the total revenue for each product sold in January?
-	SELECT sum(quantity)*price as revenue,product
+	SELECT sum(quantity)*price as revenue
+	,product
 	FROM BIT_DB.JanSales
 	GROUP BY product
 	
@@ -55,35 +56,55 @@ In this SQL, I'm querying a database with multiple tables in it to quantify stat
 	AND length(orderid) = 6 
 	AND orderid <> 'Order ID'
 
-	## Fliter by date, price 
 
-	select orderdate
-	from BIT_DB.FebSales
-	where orderdate between '02/13/19 00:00' AND '02/18/19 00:00'
-
-	select location
-	from BIT_DB.febsales
-	where orderdate = '02/18/19 01:35'
-
-
-	select sum(quantity)
-	from BIT_DB.febsales
-	where orderdate like '02/18/19%'
-
-
-	select distinct Product 
-	from BIT_DB.febsales
-	where Product like '%Batteries%'
-
-
-	select distinct product, price
-	from BIT_DB.febsales
-	where price like'%.99'
-
-
-	## List all the products sold in LA in Feb and include how many of each were sold. 
-
+	#8. List all the products sold in LA in Feb and include how many of each were sold. 
 	Select Product, SUM (quantity)
 	from BIT_DB.febsales
 	where location like '%Los Angeles%'
 	group by Product
+
+
+	#9. WHich location in New York received at least 3 orders in January, and how many orders did they each have?
+	SELECT distinct location, count(orderID)
+	FROM BIT_DB.JanSales
+	where location like '%NY%'
+	AND length(orderID) = 6
+	AND orderid <> 'Order ID'
+	group by location 
+	HAVING count (orderID)>2;
+
+
+	#10. How many of each type of headphone was sold in February?
+	Select sum(Quantity) as quantity, product 
+	from BIT_DB.FebSales
+	where Product like '%Headphones%'
+	group by Product
+
+
+	#11. What was the average amount spent per account in February?
+	SELECT sum(quantity*price)/count(cust.acctnum)
+	from BIT_DB.FebSales FEB
+	left join BIT_DB.customers cust
+	on FEB.orderid=cust.order_id
+	where length(orderid)=6
+	and orderid <> 'Order ID'
+
+
+	#12. What was the average quantity of products purchased per account in February?
+
+	SELECT sum(quantity)/count(cust.acctnum)
+	from BIT_DB.FebSales FEB
+	left join BIT_DB.customers cust
+	on FEB.orderid=cust.order_id
+	where length(orderid)=6
+	and orderid <> 'Order ID'
+
+
+
+	#13. Which product bought in the most revenue in January and how much revenue did it bring in total?
+	select product,
+	sum(quantity*price)
+	from BIT_DB.JanSales
+	group by product
+	order by sum(quantity*price) desc
+	limit 1
